@@ -1,30 +1,20 @@
-# README
+---
+title: "UCI_HAR_Dataset Assignment"
+output:
+  html_document:
+    toc: yes
+---
 
-Satisfies the requriement for assignement due 2/22/15:
+## Scripts in This Directory
 
-*You should also include a README.md in the repo with your scripts. This repo explains how all of the scripts work and how they are connected.  *
+###ReadAndMerge.R
+```
+ReadAndMerge(wd="UCI_HAR_Dataset")
+```
+ReadAndMerge() receives a single argument `wd` as the working directory in which to find the *UCI HAR Dataset*. The default is `UCI_HAR_Dataset`, the directory left from unzipping the download. The function builds a merged table for the UCI_HAR_Dataset, assigning the variables names from the features.txt file and activities from the activity_labels.txt file. The activities are read from the YTest and YTrain.
 
-## Description
-
-*From assignment page*
-
-One of the most exciting areas in all of data science right now is wearable computing - see for example this article . Companies like Fitbit, Nike, and Jawbone Up are racing to develop the most advanced algorithms to attract new users. The data linked to from the course website represent data collected from the accelerometers from the Samsung Galaxy S smartphone. A full description is available at the site where the data was obtained: 
-
-
-[Samsung Galaxy S](http://archive.ics.uci.edu/ml/datasets/Human+Activity+Recognition+Using+Smartphones)
-
-[Data for the project](https://d396qusza40orc.cloudfront.net/getdata%2Fprojectfiles%2FUCI%20HAR%20Dataset.zip)
-
-## Assignment
-You should create one R script called run_analysis.R that does the following. 
-
-1. Merges the training and the test sets to create one data set.
-
-2. Extracts only the measurements on the mean and standard deviation for each measurement. 
-
-3. Uses descriptive activity names to name the activities in the data set
-
-4. Appropriately labels the data set with descriptive variable names. 
-
-5. From the data set in step 4, creates a second, independent tidy data set with the average of each variable for each activity and each subject.
-
+###MeanAndSigma.R
+```
+MeanAndSigma(t)
+```
+MeanAndSigma() receives a single table with factors in a variable named `Activity` and returns a a table of means and standard deviations for all variables, cut into factors as defined by the `Activity` column. *NOTE: a table built by ReadAndMerge() should work*.

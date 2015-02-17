@@ -1,2 +1,5 @@
 .httr-oauth
 UCI_HAR_Dataset/*
+.Rproj.user
+*.html
+_uciHarDataset_merged.txt
