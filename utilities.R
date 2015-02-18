@@ -24,17 +24,17 @@ getActivities<-function(wd = "UCI_HAR_Dataset")
 
 setTidyNames<-function(tab)
 {
-    tab$Feature <- sapply(tab$Feature, function(x) gsub("tGravity","Gravity ",x) )
-    tab$Feature <- sapply(tab$Feature, function(x) gsub("tBody","Body ",x) )
+    tab$Feature <- sapply(tab$Feature, function(x) gsub("tGravity","Gravity",x) )
+    tab$Feature <- sapply(tab$Feature, function(x) gsub("tBody","Body",x) )
     
-    tab$Feature <- sapply(tab$Feature, function(x) gsub("GyroJerkMag","Angular Velocity Jerk Magnitude ",x) )
-    tab$Feature <- sapply(tab$Feature, function(x) gsub("AccJerkMag","Linear Acceleration Jerk Magnitude ",x) )
+    tab$Feature <- sapply(tab$Feature, function(x) gsub("GyroJerkMag","AngularVelocityJerk",x) )
+    tab$Feature <- sapply(tab$Feature, function(x) gsub("AccJerkMag","LinearAccelerationJerk",x) )
     
-    tab$Feature <- sapply(tab$Feature, function(x) gsub("AccMag","Linear Acceleration Magnitude ",x) )
-    tab$Feature <- sapply(tab$Feature, function(x) gsub("GyroMag","Angular Velocity Magnitude ",x) )
+    tab$Feature <- sapply(tab$Feature, function(x) gsub("AccMag","LinearAcceleration",x) )
+    tab$Feature <- sapply(tab$Feature, function(x) gsub("GyroMag","AngularVelocity",x) )
 
-    tab$Feature <- sapply(tab$Feature, function(x) gsub("-mean()","Mean",x) )
-    tab$Feature <- sapply(tab$Feature, function(x) gsub("-std()","Sigma",x) )
+    tab$Feature <- sapply(tab$Feature, function(x) gsub("-mean()","Mean",x,fixed=T) )
+    tab$Feature <- sapply(tab$Feature, function(x) gsub("-std()","Sigma",x,fixed=T) )
 
     return(tab)
 
@@ -48,7 +48,7 @@ getMeanAndSigma<-function(tab)
     return(
         as.data.frame(
             t %>% 
-                select(Activity,
+                select(Subject,Activity,
                        ends_with("mean()"),
                        ends_with("std()"),
                        -contains("_f",ignore.case = FALSE),
@@ -64,10 +64,10 @@ getAveragedEach<-function(tab)
     return(
         as.data.frame(
             tbl_df(tab) %>%
-                gather(Feature,mean,-Activity) %>%
+                gather(Feature,mean,-Activity,-Subject) %>%
                 separate(Feature,c("id","num","Feature"),sep = "_") %>%
                 select(-id,-num) %>%
-                group_by(Activity,Feature) %>%
+                group_by(Subject,Activity,Feature) %>%
                 summarize(Mean = mean(mean))
             )
         )
@@ -91,8 +91,8 @@ getReadAndMerged<-function(wd = "UCI_HAR_Dataset")
     XTrain<-read.table("train/X_train.txt",stringsAsFactors=F)
     XTest<-read.table("test/X_test.txt",stringsAsFactors=F)
     
-    YTrain<-read.table("train/Y_train.txt",stringsAsFactors=F)
-    YTest<-read.table("test/Y_test.txt",stringsAsFactors=F)
+    YTrain<-read.table("train/y_train.txt",stringsAsFactors=F)
+    YTest<-read.table("test/y_test.txt",stringsAsFactors=F)
     
     subTrain<-read.table("train/subject_train.txt",stringsAsFactors=F)
     subTest<-read.table("test/subject_test.txt",stringsAsFactors=F)
@@ -104,12 +104,19 @@ getReadAndMerged<-function(wd = "UCI_HAR_Dataset")
     names(XTrain)<-vNames$V2
     names(XTest)<-vNames$V2
     
-    # Now we add those activities based on the index given in the activity_labels
+    # Add activities based on the index (y_train/y_test) translated by the activity_labels
     XTrain$Activity<-sapply(YTrain$V1,function(x) as.factor(aNames[x,"V2"]))
     XTest$Activity<-sapply(YTest$V1,function(x) as.factor(aNames[x,"V2"]))
     
+    # Similarly, add the Subject numbers. This does not have a translation index, just a number factor.
+    XTrain$Subject<-subTrain[,"V1"]
+    XTest$Subject<-subTest[,"V1"]
+    
     # Merge the tables into tab
     tab<-XTrain; tab<-rbind(tab,XTest)
+    
+    # Change the Subject to a factor (after merge, as there's no guarantee we're sampling the same folks)
+#     tab$Subject<-as.factor(tab$Subject)
     
     # Clear out unused tables
     rm(aNames,subTest,subTrain,vNames,XTest,XTrain,YTest,YTrain)

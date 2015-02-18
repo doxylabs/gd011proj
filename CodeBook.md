@@ -9,6 +9,12 @@ CodeBook
 
 ## Variables
 
+### Subject
+
+Subject is a factor representing the individuals that took part in the study. The number of samples per subject varies like so:
+
+!["samplesPerSubject"](sampPerSubject.png)
+
 ### Activity
 
 Each activity the subject was performing when the observation was made. This is a factor with the following six possible indices and entries:
@@ -26,24 +32,24 @@ The Features are translations of opaque variable names from the study to human r
 
 The five features are body angular velocity and body angular velocity "jerk" magnitude, body linear acceleration and body linear acceleration "jerk" magnitude measures, and gravity linear acceleration gravity magnitude measures.
 
-* Body Angular Velocity Jerk Magnitude Mean()
-* Body Angular Velocity Jerk Magnitude Sigma()
+* BodyAngularVelocityJerkMean
+* BodyAngularVelocityJerkSigma
 	- The magnitude mean and standard deviation of the angular velocity "jerk" measurements.
 
-* Body Angular Velocity Magnitude Mean()
-* Body Angular Velocity Magnitude Sigma()
+* BodyAngularVelocityMean
+* BodyAngularVelocitySigma
 	- The magnitude mean and standard deviation of the angular velocity measurements.
 
-* Body Linear Acceleration Jerk Magnitude Mean()
-* Body Linear Acceleration Jerk Magnitude Sigma()
+* BodyLinearAccelerationJerkMean
+* BodyLinearAccelerationJerkSigma
 	- The magnitude mean and standard deviation of the linear acceleration "jerk" measurements.
 
-* Body Linear Acceleration Magnitude Mean()
-* Body Linear Acceleration Magnitude Sigma()
+* BodyLinearAccelerationMean
+* BodyLinearAccelerationSigma
 	- The magnitude mean and standard deviation of the linear acceleration measurements.
 
-* Gravity Linear Acceleration Magnitude Mean()
-* Gravity Linear Acceleration Magnitude Sigma()
+* GravityLinearAccelerationMean
+* GravityLinearAccelerationSigma
 	- The magnitude mean and standard deviation of the linear acceleration measurements.
 
 
