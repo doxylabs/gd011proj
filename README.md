@@ -7,6 +7,8 @@ See also: [CodeBook](https://github.com/jrherrick/gd011proj/blob/master/CodeBook
 
 ![w01.jpg](w01.png)
 
+![w02.jpg](w02.png)
+
 ## Scripts and Utilities
 
 ### data-reset.R
