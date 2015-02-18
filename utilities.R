@@ -42,8 +42,6 @@ setTidyNames<-function(tab)
 
 getMeanAndSigma<-function(tab)
 {
-    # test
-    # tab<-ReadAndMerge()
     # Extracts mean and standard deviation for each measure -------------------
     t<-tbl_df(tab)
     
@@ -63,26 +61,21 @@ getMeanAndSigma<-function(tab)
 
 getAveragedEach<-function(tab)
 {
-    # mtab<-ReadAndMerge(); tab<-MeanAndSigma(mtab)
-    #     View(names(tab))
     return(
         as.data.frame(
-            mt<-tbl_df(tab) %>%
+            tbl_df(tab) %>%
                 gather(Feature,mean,-Activity) %>%
                 separate(Feature,c("id","num","Feature"),sep = "_") %>%
                 select(-id,-num) %>%
                 group_by(Activity,Feature) %>%
-                summarize(Mean = mean(mean)) # %>%
-#                 print
+                summarize(Mean = mean(mean))
             )
         )
-    # WriteStep5(mt,"step5.txt")
 }
 
 
 getReadAndMerged<-function(wd = "UCI_HAR_Dataset")
 {
-    # wd = "UCI_HAR_Dataset"
     fi<-file.info(wd)[1,"isdir"]
     if(fi != TRUE | is.na(fi)){
         message("I cannot find the working directory")
@@ -92,8 +85,6 @@ getReadAndMerged<-function(wd = "UCI_HAR_Dataset")
     setwd(wd)
     
     # Read Data and Var Names -------------------------------------------------
-    # setwd("UCI_HAR_Dataset")
-    # setwd("..")
     vNames<-getFeatures(".")
     aNames<-getActivities(".")
     
@@ -107,8 +98,7 @@ getReadAndMerged<-function(wd = "UCI_HAR_Dataset")
     subTest<-read.table("test/subject_test.txt",stringsAsFactors=F)
     
     
-    # Merges the training and the test sets to create one data set. -----------
-    
+    # Merges the training and the test sets to create one data set. -----------    
     
     # Assign names to each variable from the features
     names(XTrain)<-vNames$V2
@@ -117,9 +107,6 @@ getReadAndMerged<-function(wd = "UCI_HAR_Dataset")
     # Now we add those activities based on the index given in the activity_labels
     XTrain$Activity<-sapply(YTrain$V1,function(x) as.factor(aNames[x,"V2"]))
     XTest$Activity<-sapply(YTest$V1,function(x) as.factor(aNames[x,"V2"]))
-    
-    # Summary data (for testing)
-    # table(XTrain$Y); table(XTest$Y)
     
     # Merge the tables into tab
     tab<-XTrain; tab<-rbind(tab,XTest)
@@ -144,15 +131,4 @@ ReadStep5<-function(file="step5.txt")
         read.table(file,header=T,row.names=NULL)
     )
 }
-
-
-# Use descriptive activity names to name the activities -------------------
-
-
-# Labels the data set with descriptive variable names.  -------------------
-
-
-# tidy data set with the average of each variable -------------------------
-# for each activity and each subject. -------------------------------------
-
 

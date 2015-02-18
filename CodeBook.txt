@@ -5,6 +5,12 @@ Code book for getdata-011 assignment Feb 22, 2015, satisfying item 3) "a code bo
 
 ## Variables
 
+**Activity**:
+
+**Feature**:
+
+**Mean**:
+
 ## Data
 
 ## Transformations
