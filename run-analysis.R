@@ -1,3 +1,5 @@
+#!/opt/local/bin/Rscript 
+
 # run-analysis.R
 
 # Details on the theory of operation is in README.md.

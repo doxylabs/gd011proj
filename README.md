@@ -5,7 +5,11 @@ See also: [CodeBook](https://github.com/jrherrick/gd011proj/blob/master/CodeBook
 
 ## Theory of Operation
 
-To get from an empty working directory to an output file, first clone the git repository with `https://github.com/jrherrick/gd011proj.git` and cd into the gd011proj directory that was created. At this point, you'll want to run `data-reset.R`. This will download the data we'll work with and set it up in the directory expected. `run-analysis.R` will then read the data and generate `step5.txt`.
+To get from an empty working directory to an output file, first clone the git repository with 
+
+    git clone https://github.com/jrherrick/gd011proj.git
+    
+...then cd into the gd011proj directory that was created. At this point, you'll want to run `data-reset.R`. This will download the data we'll work with and set it up in the directory expected. `run-analysis.R` will then read the data and generate `step5.txt`.
 
 ![w01.jpg](w01.png)
 

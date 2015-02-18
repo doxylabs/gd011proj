@@ -1,3 +1,5 @@
+#!/opt/local/bin/Rscript 
+
 # show-table.R
 
 # See README.md for more information
