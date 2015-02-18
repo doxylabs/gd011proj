@@ -34,23 +34,23 @@ The five features are body angular velocity and body angular velocity "jerk" mag
 
 * BodyAngularVelocityJerkMean
 * BodyAngularVelocityJerkSigma
-	- The magnitude mean and standard deviation of the angular velocity "jerk" measurements.
+	- The magnitude mean and standard deviation of the body angular velocity "jerk" measurements.
 
 * BodyAngularVelocityMean
 * BodyAngularVelocitySigma
-	- The magnitude mean and standard deviation of the angular velocity measurements.
+	- The magnitude mean and standard deviation of the body angular velocity measurements.
 
 * BodyLinearAccelerationJerkMean
 * BodyLinearAccelerationJerkSigma
-	- The magnitude mean and standard deviation of the linear acceleration "jerk" measurements.
+	- The magnitude mean and standard deviation of body linear acceleration "jerk" measurements.
 
 * BodyLinearAccelerationMean
 * BodyLinearAccelerationSigma
-	- The magnitude mean and standard deviation of the linear acceleration measurements.
+	- The magnitude mean and standard deviation of body linear acceleration measurements.
 
 * GravityLinearAccelerationMean
 * GravityLinearAccelerationSigma
-	- The magnitude mean and standard deviation of the linear acceleration measurements.
+	- The magnitude mean and standard deviation of the gravitational linear acceleration measurements.
 
 
 ### Mean
