@@ -6,7 +6,7 @@
 
 source("utilities.R")
 
-options(width=120, justify="left")
+options(width=140, justify="left")
 ReadStep5() %>% 
     print(justify="right")
 

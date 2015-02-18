@@ -21,8 +21,8 @@ tab<-getReadAndMerged("UCI_HAR_Dataset")
 tidytab<-tab %>%
     getMeanAndSigma() %>%   # Extracts mean and standard deviation for each measure
     getAveragedEach() %>%   # Average of each variable
-    setTidyNames()          # Tidy data set for each activity (Activity) and subject (Feature)
-
+    setTidyNames()    #%>%   # Tidy data set for each activity (Activity) and subject (Feature)
+    #spread(Activity,Mean)   # hmm... Really nice, but... is this tidy or ...?
 
 # Write the file to disk for attaching to the Assignment ------------------
 
