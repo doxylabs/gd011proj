@@ -1,8 +1,18 @@
 # UCI_HAR_Dataset Assignment
 
-See also: [CodeBook](https://github.com/jrherrick/gd011proj/blob/master/CodeBook.md) for more information on the data.
+See also: [CodeBook](https://github.com/jrherrick/gd011proj/blob/master/CodeBook.md) for more information on the data. Take a look at [Assignment.md](https://github.com/jrherrick/gd011proj/blob/master/Assignment.md) for information on the assignment proper.
 
-## Functions in utilities.R
+## data-reset.R
+
+data-reset.R is intended to run from the command line. Run it with Rscript like so, adding a full path to data-reset.R if needed:
+
+```
+Rscript data-reset.R
+```
+
+This script depends on curl being available on your system. The script could probably be smarter about this -- this is left as an exercise for the reader.
+
+## utilities.R
 
 
 ### `ReadAndMerge(wd="UCI_HAR_Dataset")`

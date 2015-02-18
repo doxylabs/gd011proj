@@ -5,3 +5,4 @@ UCI_HAR_Dataset.zip
 .Rproj.user
 *.html
 _uciHarDataset_merged.txt
+.Rhistory

@@ -1,0 +1,61 @@
+"Activity" "Feature" "Mean"
+"STANDING" "Body Linear Acceleration Jerk Magnitude Mean()" -0.97711802452256
+"STANDING" "Body Linear Acceleration Jerk Magnitude Sigma()" -0.971452977271773
+"STANDING" "Body Linear Acceleration Magnitude Mean()" -0.954179661789087
+"STANDING" "Body Linear Acceleration Magnitude Sigma()" -0.946534779481637
+"STANDING" "Body Angular Velocity Jerk Magnitude Mean()" -0.978697092402938
+"STANDING" "Body Angular Velocity Jerk Magnitude Sigma()" -0.973528580524659
+"STANDING" "Body Angular Velocity Magnitude Mean()" -0.942152523158447
+"STANDING" "Body Angular Velocity Magnitude Sigma()" -0.929531182355719
+"STANDING" "Gravity Linear Acceleration Magnitude Mean()" -0.954179661789087
+"STANDING" "Gravity Linear Acceleration Magnitude Sigma()" -0.946534779481637
+"SITTING" "Body Linear Acceleration Jerk Magnitude Mean()" -0.98244444337085
+"SITTING" "Body Linear Acceleration Jerk Magnitude Sigma()" -0.978907079240293
+"SITTING" "Body Linear Acceleration Magnitude Mean()" -0.95464392144063
+"SITTING" "Body Linear Acceleration Magnitude Sigma()" -0.939324188353517
+"SITTING" "Body Angular Velocity Jerk Magnitude Mean()" -0.987880071435003
+"SITTING" "Body Angular Velocity Jerk Magnitude Sigma()" -0.98460762855937
+"SITTING" "Body Angular Velocity Magnitude Mean()" -0.946724138930782
+"SITTING" "Body Angular Velocity Magnitude Sigma()" -0.951199015615082
+"SITTING" "Gravity Linear Acceleration Magnitude Mean()" -0.95464392144063
+"SITTING" "Gravity Linear Acceleration Magnitude Sigma()" -0.939324188353517
+"LAYING" "Body Linear Acceleration Jerk Magnitude Mean()" -0.97920875497428
+"LAYING" "Body Linear Acceleration Jerk Magnitude Sigma()" -0.974240573559671
+"LAYING" "Body Linear Acceleration Magnitude Mean()" -0.941110656500514
+"LAYING" "Body Linear Acceleration Magnitude Sigma()" -0.932160020511831
+"LAYING" "Body Angular Velocity Jerk Magnitude Mean()" -0.982726626075103
+"LAYING" "Body Angular Velocity Jerk Magnitude Sigma()" -0.976754966054527
+"LAYING" "Body Angular Velocity Magnitude Mean()" -0.938435972026749
+"LAYING" "Body Angular Velocity Magnitude Sigma()" -0.940596109587449
+"LAYING" "Gravity Linear Acceleration Magnitude Mean()" -0.941110656500514
+"LAYING" "Gravity Linear Acceleration Magnitude Sigma()" -0.932160020511831
+"WALKING" "Body Linear Acceleration Jerk Magnitude Mean()" -0.241451989838379
+"WALKING" "Body Linear Acceleration Jerk Magnitude Sigma()" -0.214555894362491
+"WALKING" "Body Linear Acceleration Magnitude Mean()" -0.167937853979757
+"WALKING" "Body Linear Acceleration Magnitude Sigma()" -0.33775398556687
+"WALKING" "Body Angular Velocity Jerk Magnitude Mean()" -0.460511516745528
+"WALKING" "Body Angular Velocity Jerk Magnitude Sigma()" -0.498841024689745
+"WALKING" "Body Angular Velocity Magnitude Mean()" -0.274866019270244
+"WALKING" "Body Angular Velocity Magnitude Sigma()" -0.382629015979094
+"WALKING" "Gravity Linear Acceleration Magnitude Mean()" -0.167937853979757
+"WALKING" "Gravity Linear Acceleration Magnitude Sigma()" -0.33775398556687
+"WALKING_DOWNSTAIRS" "Body Linear Acceleration Jerk Magnitude Mean()" -0.111801821250135
+"WALKING_DOWNSTAIRS" "Body Linear Acceleration Jerk Magnitude Sigma()" -0.011220665881458
+"WALKING_DOWNSTAIRS" "Body Linear Acceleration Magnitude Mean()" 0.101249699851558
+"WALKING_DOWNSTAIRS" "Body Linear Acceleration Magnitude Sigma()" 0.116488914352198
+"WALKING_DOWNSTAIRS" "Body Angular Velocity Jerk Magnitude Mean()" -0.416891551237909
+"WALKING_DOWNSTAIRS" "Body Angular Velocity Jerk Magnitude Sigma()" -0.440929331631124
+"WALKING_DOWNSTAIRS" "Body Angular Velocity Magnitude Mean()" -0.129785639782795
+"WALKING_DOWNSTAIRS" "Body Angular Velocity Magnitude Sigma()" -0.251427800988919
+"WALKING_DOWNSTAIRS" "Gravity Linear Acceleration Magnitude Mean()" 0.101249699851558
+"WALKING_DOWNSTAIRS" "Gravity Linear Acceleration Magnitude Sigma()" 0.116488914352198
+"WALKING_UPSTAIRS" "Body Linear Acceleration Jerk Magnitude Mean()" -0.390938624541516
+"WALKING_UPSTAIRS" "Body Linear Acceleration Jerk Magnitude Sigma()" -0.385400351575259
+"WALKING_UPSTAIRS" "Body Linear Acceleration Magnitude Mean()" -0.100204123946392
+"WALKING_UPSTAIRS" "Body Linear Acceleration Magnitude Sigma()" -0.249875157023391
+"WALKING_UPSTAIRS" "Body Angular Velocity Jerk Magnitude Mean()" -0.608047148013666
+"WALKING_UPSTAIRS" "Body Angular Velocity Jerk Magnitude Sigma()" -0.666836734071891
+"WALKING_UPSTAIRS" "Body Angular Velocity Magnitude Mean()" -0.178281147518361
+"WALKING_UPSTAIRS" "Body Angular Velocity Magnitude Sigma()" -0.337142124176179
+"WALKING_UPSTAIRS" "Gravity Linear Acceleration Magnitude Mean()" -0.100204123946392
+"WALKING_UPSTAIRS" "Gravity Linear Acceleration Magnitude Sigma()" -0.249875157023391

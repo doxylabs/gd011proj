@@ -1,25 +1,27 @@
 # run-analysis.R
 
+# Details on the theory of operation is in README.md.
+# Details on the data format this flow yields is in CodeBook.md
+
+
+library(dplyr)
 source("utilities.R")
 
+
 # Read Data and Var Names -------------------------------------------------
-# Merges the training and the test sets to create one data set. -----------
+# Merges the training and the test sets to create one data set.
 
-tab<-ReadAndMerge("UCI_HAR_Dataset")
-write.table(tab,file = "_uciHarDataset_merged.txt",row.names = FALSE)
-str(tab)
-
-# Extracts mean and standard deviation for each measure -------------------
-
-mstab<-MeanAndSigma(tab)
-
-# Use descriptive activity names to name the activities -------------------
+tab<-getReadAndMerged("UCI_HAR_Dataset") 
 
 
-# Labels the data set with descriptive variable names.  -------------------
+# Filter, Average and Tidy ------------------------------------------------
+
+tidytab<-tab %>%
+    getMeanAndSigma() %>%   # Extracts mean and standard deviation for each measure
+    getAveragedEach() %>%   # Average of each variable
+    setTidyNames()          # Tidy data set for each activity (Activity) and subject (Feature)
 
 
-# tidy data set with the average of each variable -------------------------
-# for each activity and each subject. -------------------------------------
+# Write the file to disk for attaching to the Assignment ------------------
 
-
+WriteStep5(tidytab)

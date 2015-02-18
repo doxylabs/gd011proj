@@ -1,12 +1,90 @@
+# utilities.R
+# See the README for more information on the functions contained herein.
 
-# ReadAndMerge: See README.md
 
 library(dplyr)
 library(tidyr)
 
-ReadAndMerge<-function(wd = "UCI_HAR_Dataset")
+
+getFeatures<-function(wd = "UCI_HAR_Dataset")
 {
-    if(file.access(names=wd)<0){
+    # wd<-"UCI_HAR_Dataset"
+    tab<-read.table(file.path(wd,"features.txt"),stringsAsFactors = F)
+    tab$V2<-paste("id",tab$V1,tab$V2,sep = "_")
+    return(tab)
+}
+
+
+getActivities<-function(wd = "UCI_HAR_Dataset")
+{
+    tab<-read.table(file.path(wd,"activity_labels.txt"),stringsAsFactors = F)
+    return(tab)
+}
+
+
+setTidyNames<-function(tab)
+{
+    tab$Feature <- sapply(tab$Feature, function(x) gsub("tGravity","Gravity ",x) )
+    tab$Feature <- sapply(tab$Feature, function(x) gsub("tBody","Body ",x) )
+    
+    tab$Feature <- sapply(tab$Feature, function(x) gsub("GyroJerkMag","Angular Velocity Jerk Magnitude ",x) )
+    tab$Feature <- sapply(tab$Feature, function(x) gsub("AccJerkMag","Linear Acceleration Jerk Magnitude ",x) )
+    
+    tab$Feature <- sapply(tab$Feature, function(x) gsub("AccMag","Linear Acceleration Magnitude ",x) )
+    tab$Feature <- sapply(tab$Feature, function(x) gsub("GyroMag","Angular Velocity Magnitude ",x) )
+
+    tab$Feature <- sapply(tab$Feature, function(x) gsub("-mean()","Mean",x) )
+    tab$Feature <- sapply(tab$Feature, function(x) gsub("-std()","Sigma",x) )
+
+    return(tab)
+
+}
+
+getMeanAndSigma<-function(tab)
+{
+    # test
+    # tab<-ReadAndMerge()
+    # Extracts mean and standard deviation for each measure -------------------
+    t<-tbl_df(tab)
+    
+    return(
+        as.data.frame(
+            t %>% 
+                select(Activity,
+                       ends_with("mean()"),
+                       ends_with("std()"),
+                       -contains("_f",ignore.case = FALSE),
+                       -matches("meanFreq|stdFreq")
+                )
+        )
+    )
+}
+
+
+getAveragedEach<-function(tab)
+{
+    # mtab<-ReadAndMerge(); tab<-MeanAndSigma(mtab)
+    #     View(names(tab))
+    return(
+        as.data.frame(
+            mt<-tbl_df(tab) %>%
+                gather(Feature,mean,-Activity) %>%
+                separate(Feature,c("id","num","Feature"),sep = "_") %>%
+                select(-id,-num) %>%
+                group_by(Activity,Feature) %>%
+                summarize(Mean = mean(mean)) # %>%
+#                 print
+            )
+        )
+    # WriteStep5(mt,"step5.txt")
+}
+
+
+getReadAndMerged<-function(wd = "UCI_HAR_Dataset")
+{
+    # wd = "UCI_HAR_Dataset"
+    fi<-file.info(wd)[1,"isdir"]
+    if(fi != TRUE | is.na(fi)){
         message("I cannot find the working directory")
         return(-1)
     }
@@ -14,9 +92,10 @@ ReadAndMerge<-function(wd = "UCI_HAR_Dataset")
     setwd(wd)
     
     # Read Data and Var Names -------------------------------------------------
-    
-    vNames<-read.table("features.txt",stringsAsFactors = F)
-    aNames<-read.table("activity_labels.txt",stringsAsFactors = F)
+    # setwd("UCI_HAR_Dataset")
+    # setwd("..")
+    vNames<-getFeatures(".")
+    aNames<-getActivities(".")
     
     XTrain<-read.table("train/X_train.txt",stringsAsFactors=F)
     XTest<-read.table("test/X_test.txt",stringsAsFactors=F)
@@ -31,14 +110,15 @@ ReadAndMerge<-function(wd = "UCI_HAR_Dataset")
     # Merges the training and the test sets to create one data set. -----------
     
     
-    # Assign names to each variable from the features.txt names
+    # Assign names to each variable from the features
     names(XTrain)<-vNames$V2
     names(XTest)<-vNames$V2
     
+    # Now we add those activities based on the index given in the activity_labels
     XTrain$Activity<-sapply(YTrain$V1,function(x) as.factor(aNames[x,"V2"]))
     XTest$Activity<-sapply(YTest$V1,function(x) as.factor(aNames[x,"V2"]))
     
-    # Summary data
+    # Summary data (for testing)
     # table(XTrain$Y); table(XTest$Y)
     
     # Merge the tables into tab
@@ -52,21 +132,17 @@ ReadAndMerge<-function(wd = "UCI_HAR_Dataset")
 }
 
 
-
-# MeanAndSigma(): See README.md
-
-MeanAndSigma<-function(t)
+WriteStep5<-function(tab,file="step5.txt")
 {
-    # Extracts mean and standard deviation for each measure -------------------
-    # t<-tab
-    table(names(t))
-    woo<-t %>%
-        select(Activity)
-    
-#     colNames<-names(t)[!(names(t) %in% c("Activity"))]
-#     by(data = t,t[,colNames], mean)
-#     t$Activity
-#     aggregate(t, by = t$Activity, FUN = mean)
+    write.table(tab,file,row.names=F)
+}
+
+
+ReadStep5<-function(file="step5.txt")
+{
+    return(
+        read.table(file,header=T,row.names=NULL)
+    )
 }
 
 
