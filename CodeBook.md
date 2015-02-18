@@ -6,6 +6,17 @@ item 3) "a code book that describes the variables, the data, and any
 transformations or work that you performed to clean up the data called
 CodeBook
 
+## Data
+
+Specifically, you will find output in the form of a 300x8 table with the Subject's ID and Feature measures on the y-axis and each of the activities performed on the x-axis described below. The mean() is taken for each of five variables with both the mean and standard deviation (sigma) measures of each variable. This leads to ten observations for each of 30 subjects, rendering 300 observations each for six activities.
+
+This format was selected for ease of use to anyone looking at the table directly. To import into a tool like Tableau that prefers long-form data, you want to gather up the Subject into a column and Mean in a new column. This simple transform will do that in R with the result in a file named `step5-longer.txt`:
+
+	source("utilities.R")
+	ReadStep5() %>%
+    	group_by(Subject,Feature) %>%
+    	gather(Activity,Mean,-Subject,-Feature) %>%
+    	WriteStep5("step5-longer.txt")
 
 ## Variables
 
@@ -57,13 +68,10 @@ The five features are body angular velocity and body angular velocity "jerk" mag
 
 The average -- technically the *mean()* of observations with matching Feature and Activity variables.
 
-## Data
-
-
 
 ## Transformations
 
-Following are details on the transformations the data undergoes. Erring on the side of details, this information 
+Following are details on the transformations the data undergoes, erring on the side of more detail...
 
 ### getActivities(wd = "UCI_HAR_Dataset")
 
