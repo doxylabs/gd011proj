@@ -17,7 +17,7 @@ Build a summary of biometric data gathered from 30 subjects. The output is a 300
     
     ...then cd into the gd011proj directory that was created. 
 
-2. At this point, you'll want to run `data-reset.R`. This will download the data we'll work with and set it up in the directory expected. *Alternatively*, you can download the [zipfile](https://d396qusza40orc.cloudfront.net/getdata%2Fprojectfiles%2FUCI%20HAR%20Dataset.zip), unzip it, rename the directory "UCI HAR Dataset" to a directory named "UCI_HAR_Dataset"
+2. At this point, you'll want to run `data-reset.R`. This will download the data we'll work with and set it up in the directory expected. *Alternatively*, you can download the [zipfile](https://d396qusza40orc.cloudfront.net/getdata%2Fprojectfiles%2FUCI%20HAR%20Dataset.zip) to the same directory as run-analysis.R, unzip it, rename the directory "UCI HAR Dataset" to a directory named "UCI_HAR_Dataset"
 
 3. `run-analysis.R` will then read the data and generate `step5.txt`.
 
