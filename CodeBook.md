@@ -109,7 +109,7 @@ A dataset is then built by:
 
 ### getReadAndMerged(wd = "UCI_HAR_Dataset")
 
-getReadAndMerged() receives a single argument `wd` as the working directory in which to find the *UCI HAR Dataset*. The default is `UCI_HAR_Dataset`, the directory created by the data-reset.R script. The function builds a merged table for the UCI_HAR_Dataset, assigning the variables names from the features.txt file and activities from the activity_labels.txt file.
+getReadAndMerged() receives a single argument `wd` as the working directory in which to find the *UCI HAR Dataset*. The default is `UCI_HAR_Dataset`, the directory created by the data-reset.R script. The function builds a merged table for the UCI_HAR_Dataset, assigning the variables names from the features.txt file, subject identifiers from the subject_test.txt and subject_train.txt files, and activities from the activity_labels.txt file.
 
 First the data is read and descriptive variable names are added by:
 
